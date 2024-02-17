@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <!-- Include Leaflet CSS -->
+    <title>Weather App -Task 3</title>
+    <link rel="stylesheet" href="/styles/weather.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         #map { height: 400px; }
@@ -12,20 +12,26 @@
 </head>
 <body>
     <h1>Weather App</h1>
-    <form id="weatherForm">
-        <label for="cityName">Enter City Name:</label>
-        <input type="text" id="cityName" name="cityName" required>
-        <button type="submit">Get Weather</button>
-    </form>
-    <div id="weatherInfo"></div>
-    <!-- Include Leaflet JavaScript -->
+    <main>
+        <div class="container">
+            <form id="weatherForm">
+                <input type="text" id="cityName" name="cityName" placeholder="Enter a location" required>
+                <button type="submit">Get Weather</button>
+            </form>
+            <div id="weatherInfo"></div>
+        </div>
+        <div id="map"></div>
+    </main>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <div id="map"></div>
     <script>
+        // Define map object outside of the event listener
+        var map = null;
+
         document.getElementById('weatherForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
             const cityName = document.getElementById('cityName').value;
+
             const response = await fetch('/getweather', {
                 method: 'POST',
                 headers: {
@@ -42,15 +48,20 @@
                                          <p>Temperature: ${data.current.temp_c}°C</p>
                                          <p>Condition: ${data.current.condition.text}</p>`;
 
-            // Initialize map
-            var map = L.map('map').setView([data.location.lat, data.location.lon], 10);
+            // Check if map is already initialized
+            if (map) {
+                console.log("Map is already initialized");
+            } else {
+                // Initialize map
+                map = L.map('map').setView([data.location.lat, data.location.lon], 10);
 
-            // Add base map layer
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-            }).addTo(map);
+                // Add tile layer
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                }).addTo(map);
+            }
 
-            // Add marker
+            // Add marker to the map
             L.marker([data.location.lat, data.location.lon]).addTo(map)
                 .bindPopup(`<b>Weather in ${data.location.name}</b><br>Temperature: ${data.current.temp_c}°C<br>Condition: ${data.current.condition.text}`).openPopup();
         });

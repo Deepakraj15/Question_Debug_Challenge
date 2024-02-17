@@ -1,31 +1,33 @@
-// Use dynamic import() instead of require()
+
 import('node-fetch').then(({ default: fetch }) => {
-    // Continue with your code here
+   
     const express = require('express');
     const bodyParser = require('body-parser');
     const path = require('path');
 
     const app = express();
+    const PORT = 3000;
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    // Set up static file directories
+
     app.use('/templates', express.static(path.join(__dirname, 'source', 'Templates')));
     app.use('/styles', express.static(path.join(__dirname, 'source', 'styles')));
+    app.use('/images', express.static(path.join(__dirname, 'source', 'images')));   
 
-    app.get('/', function (req, res) {
+    app.get('/', (req, res)=> {
         res.sendFile('index.html', { root: path.join(__dirname, 'source', 'Templates') });
     });
 
-    app.get('/weather', function (req, res) {
+    app.get('/weather', (req, res)=> {
         res.sendFile('weather.html', { root: path.join(__dirname, 'source', 'Templates') });
     });
 
     app.post('/getweather', async (req, res) => {
         const cityName = req.body.cityName;
         const apiKey = '994ab94e21cf406fbe735244241702'; 
-      const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`;
+        const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`;
       
         try {
             const response = await fetch(apiUrl);
@@ -37,8 +39,10 @@ import('node-fetch').then(({ default: fetch }) => {
         }
         
     });
-
-    const PORT = process.env.PORT || 3000;
+    app.get('/login',(req, res)=> {
+        res.sendFile('login.html', { root: path.join(__dirname, 'source', 'Templates') });
+    });
+   
     app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 }).catch(err => {
     console.error('Error importing node-fetch:', err);
