@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 400px; }
+    </style>
 </head>
 <body>
     <h1>Weather App</h1>
@@ -13,7 +18,9 @@
         <button type="submit">Get Weather</button>
     </form>
     <div id="weatherInfo"></div>
-
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <div id="map"></div>
     <script>
         document.getElementById('weatherForm').addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -34,6 +41,18 @@
             weatherInfoDiv.innerHTML = `<h2>Weather in ${data.location.name}, ${data.location.country}</h2>
                                          <p>Temperature: ${data.current.temp_c}°C</p>
                                          <p>Condition: ${data.current.condition.text}</p>`;
+
+            // Initialize map
+            var map = L.map('map').setView([data.location.lat, data.location.lon], 10);
+
+            // Add base map layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            // Add marker
+            L.marker([data.location.lat, data.location.lon]).addTo(map)
+                .bindPopup(`<b>Weather in ${data.location.name}</b><br>Temperature: ${data.current.temp_c}°C<br>Condition: ${data.current.condition.text}`).openPopup();
         });
     </script>
 </body>
