@@ -1,49 +1,59 @@
-# This Readme.md file is used for guiding you through the details of the Debugging Challenge
+# Debugging Challenge README
 
-## INSTRUCTIONS TO READ
-1) Don't make unnecessary changes to any part of the website.
-2) You can always clarify your doubts to the co-ordinator who will be available at the time of the challenge.
-3) You are allowed to use any offline code editor of your choice.
+## INSTRUCTIONS TO FOLLOW
+1) Avoid making unnecessary alterations to any part of the website.
+2) Feel free to seek clarification from the coordinator who will be available during the challenge.
+3) You may utilize any offline code editor of your preference.
 
-\********************************************************************************************************************************************************
-This Challange is framed in a way to test your basic understading about web development.The following knowledge  will be tested by the given tasks
+---
+
+This challenge aims to evaluate your fundamental understanding of web development. The tasks provided will assess the following areas:
+
 1) Basic HTML and CSS.
-2) Javascript.
-3) API usage.
+2) JavaScript.
+3) API integration.
 
+### Task 1:
+Replicate the HTML components as depicted in 'image1.png'. Once done, click the button available at the bottom of the website to proceed to the next task.
 
-Task 1: You are asked to make necessary changes on the home page ('index.html' and 'index.css') to make it appear as in the given image 'image1.png'
-Task 2: Debug the auth.js file which is supposed to perform a simple for validation on user input.
-Task 3: You are given an Weather API fetch the details and display it on the weather.html page as shown in the given image 'image2.png'
-Task 4: Document the changes you commit in the report.txt file (You can stick with any format of your choice)
+### Task 2:
+Debug the `auth.js` file, which is intended to execute simple form validation on user input. Click 'login' to proceed to the next task once debugging is complete.
 
-*********************************************************************************************************************************************************/
-## FOLDER STRUCTURE FOR REFERENCE
+### Task 3:
+You are provided with a Weather API. Fetch the details and display them on the `weather.html` page as illustrated in 'image2.png'.
+
+### Task 4:
+Document the modifications you make on the website in the `report.txt` file (You can adhere to any format of your preference).
+
+---
+
+### FOLDER STRUCTURE FOR REFERENCE
+```
 Question_Debug_Challenge
-    \
-    source
-        \
-        - Templates
-            \
-                - index.html
-                - login.html
-                - weather.html
-        - styles
-            \
-                - index.css
-                - login.css
-                - weather.css
-    server.js
-    package.json
-    package-lock.json
-    auth.js
-    report.txt
-    requirements.txt
+    |
+    └── source
+    |     |
+    |     └── Templates
+    |     |     |
+    |     |     └── index.html
+    |     |     └── login.html
+    |     |     └── weather.html
+    |     └── styles
+    |           |
+    |           └── index.css
+    |           └── login.css
+    |           └── weather.css
+    |
+    └── server.js
+    └── package.json
+    └── package-lock.json
+    └── auth.js
+    └── report.txt
+    └── requirements.txt
+```
 
-* all the html files will be available in the Templates folder (source\Templates)
-* all the css files will be available in the styles folder (source\styles)
-* server.js will act as local server on port 3000 (you are allowed to change the port incase the port 3000 is occupied)
-* auth.js will have the code required to perform validation on the user input.
-* package.json will have the dependencies used on this challenge.
-
-To run the app use this command on the terminal: npm start
+* All the HTML files will be available in the `Templates` folder (`source\Templates`).
+* All the CSS files will be available in the `styles` folder (`source\styles`).
+* `server.js` will act as a local server on port 3000 (you are allowed to change the port in case port 3000 is occupied).
+* `auth.js` will have the code required to perform validation on user input.
+* `package.json` will have the dependencies used in this challenge.

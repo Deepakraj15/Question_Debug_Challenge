@@ -97,7 +97,7 @@ button:hover{
     font-weight: 500;
     letter-spacing: 0.7px;
 }
-a{
+#signup{
  text-decoration: none;
  background-color: var(--notorange);
 color: azure;
