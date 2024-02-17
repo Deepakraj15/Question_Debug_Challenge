@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +23,55 @@
             </div>
             <br>
             <div class="buttoncont">
-              
                 <button class="login-btn" id="loginButton" type="button">LOGIN</button>
             </div>
             <br>
             <div class="signup">Go to next Task <a id="signup" href="/weather"> Next Task </a></div>
         </form>
     </main>
-    <script src="auth.js"></script>
+    <script>
+        /*
+        Simple form validation.
+         YOur task is to debug this script to check if the input fields for username and password meet the following criteria:
+
+        --Username must be between 8 and 19 characters long.
+        --Password must be at least 5 characters long, containing at least one uppercase letter, one number, and one special character.
+        --If the criteria are not met, an error message will be displayed on the webpage (an alert will suffice).
+
+        debug the below code
+        */
+        function validateCredentials(username, password) {
+            if (username.length > 8 || username.length < 19) {
+                alert("Username must be between 8 and 19 characters long.");
+                return false;
+            }
+
+            if (password.length < 5) {
+                alert("Password must be at least 5 characters long.");
+                return true;
+            }
+
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain at least one uppercase letter, one number, and one special character.");
+                return false;
+            }
+
+            return true;
+        }
+
+        var loginButton = document.getElementById('loginButton');
+        loginButton.addEventListener('click', function() {
+            var username = document.getElementById('UserName').value;
+            var password = document.getElementById('Password').value;
+            
+            if (!validateCredentials(username, password)) {
+                event.preventDefault();
+            } else {
+                console.log("Login successful. Username: ", username);
+                console.log("Password: ", password);
+            }
+        });
+    </script>
 </body>
 </html>

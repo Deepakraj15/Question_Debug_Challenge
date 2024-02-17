@@ -14,16 +14,16 @@ This challenge aims to evaluate your fundamental understanding of web developmen
 3) API integration.
 
 ### Task 1:
-Replicate the HTML components as depicted in 'image1.png'. Once done, click the button available at the bottom of the website to proceed to the next task.
+Please replicate the HTML components as shown in 'image1.png'. After completion, click the button located at the bottom of the website to proceed to the next task. Make necessary changes in `index.html` and `index.css` to achieve the desired results.
 
 ### Task 2:
-Debug the `auth.js` file, which is intended to execute simple form validation on user input. Click 'login' to proceed to the next task once debugging is complete.
+Debug the `login.html` file, which is designed to perform simple form validation on user input. Click 'login' to verify if the task is functioning correctly; otherwise, click the 'next task' button to proceed once debugging is finished.
 
 ### Task 3:
-You are provided with a Weather API. Fetch the details and display them on the `weather.html` page as illustrated in 'image2.png'.
+Your assignment is to debug the 'weather.html' file and 'server.js' file to restore functionality to the Weather API.
 
 ### Task 4:
-Document the modifications you make on the website in the `report.txt` file (You can adhere to any format of your preference).
+Please document the modifications made to the website in the `report.txt` file. You may choose any format that suits your preference.
 
 ---
 

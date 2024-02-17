@@ -24,7 +24,7 @@
     </main>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // Define map object outside of the event listener
+        
         var map = null;
 
         document.getElementById('weatherForm').addEventListener('submit', async function(event) {
@@ -40,7 +40,7 @@
                 body: JSON.stringify({ cityName })
             });
 
-            const data = await response.json();
+            const Data = await response.json();
             console.log(data);
 
             const weatherInfoDiv = document.getElementById('weatherInfo');
@@ -48,20 +48,20 @@
                                          <p>Temperature: ${data.current.temp_c}°C</p>
                                          <p>Condition: ${data.current.condition.text}</p>`;
 
-            // Check if map is already initialized
+           
             if (map) {
                 console.log("Map is already initialized");
             } else {
-                // Initialize map
+             
                 map = L.map('map').setView([data.location.lat, data.location.lon], 10);
 
-                // Add tile layer
+              
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                 }).addTo(map);
             }
 
-            // Add marker to the map
+            
             L.marker([data.location.lat, data.location.lon]).addTo(map)
                 .bindPopup(`<b>Weather in ${data.location.name}</b><br>Temperature: ${data.current.temp_c}°C<br>Condition: ${data.current.condition.text}`).openPopup();
         });

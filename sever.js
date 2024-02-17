@@ -27,7 +27,7 @@ import('node-fetch').then(({ default: fetch }) => {
     app.post('/getweather', async (req, res) => {
         const cityName = req.body.cityName;
         const apiKey = '994ab94e21cf406fbe735244241702'; 
-        const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`;
+        const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${cityName}&q=${apikey}&aqi=no`;
       
         try {
             const response = await fetch(apiUrl);
