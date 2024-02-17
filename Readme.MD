@@ -6,6 +6,11 @@
 3) You are allowed to use any offline code editor of your choice.
 
 \********************************************************************************************************************************************************
+This Challange is framed in a way to test your basic understading about web development.The following knowledge  will be tested by the given tasks
+1) Basic HTML and CSS.
+2) Javascript.
+3) API usage.
+
 
 Task 1: You are asked to make necessary changes on the home page ('index.html' and 'index.css') to make it appear as in the given image 'image1.png'
 Task 2: Debug the auth.js file which is supposed to perform a simple for validation on user input.
@@ -19,11 +24,21 @@ Question_Debug_Challenge
     source
         \
         - Templates
+            \
+                - index.html
+                - login.html
+                - weather.html
         - styles
+            \
+                - index.css
+                - login.css
+                - weather.css
     server.js
     package.json
     package-lock.json
     auth.js
+    report.txt
+    requirements.txt
 
 * all the html files will be available in the Templates folder (source\Templates)
 * all the css files will be available in the styles folder (source\styles)
